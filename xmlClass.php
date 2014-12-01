@@ -7,11 +7,6 @@
  */
 
 class xmlClass {
-    
-    function __construct(){
-        
-    }
-
 
     /**
      * 将php数组转换为XML文件的方法
