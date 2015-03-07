@@ -1,7 +1,7 @@
 php xml class
 =========
 
-## 将php数组转换为XCML文件的方法
+## 将php数组转换为XML文件的方法
 ```php
 require_once './xmlClass.php';
 $obj = new xmlClass;
