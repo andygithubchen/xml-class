@@ -23,11 +23,11 @@ class xmlClass {
             	die('不能创建xml文件');
             }
         }
-        
+
         $file = APP_XML_ROOT.$name.'.xml';
 
         //打开文件并取得文件头指针
- 		$handle = @fopen($file, "w");  
+ 		$handle = @fopen($file, "w");
 
         //组装数据
         $xml = $this->package($array,'books','book');
@@ -35,7 +35,7 @@ class xmlClass {
         //写入内容
         if (!$wr = fwrite($handle, $xml)) {
             die('内容写入错误！');
-        } 
+        }
 
         //关闭文件
         if(!fclose($handle)){
@@ -47,7 +47,7 @@ class xmlClass {
         } else {
             return true;
         }
-        
+
     }
 
     /**
@@ -75,10 +75,10 @@ class xmlClass {
      * @return str    $xml     返回组装好的XML字符串
      */
     public function foreachArr($value){
-    	 $xml = '';    
+    	 $xml = '';
          foreach ($value as $k => $v) {
          	if (is_array($v)) {
-         		$k = is_numeric($k) ? 'action' : $k;			
+         		$k = is_numeric($k) ? 'action' : $k;
          		$xml .= '<'.$k.'>';
          		$xml .= $this->foreachArr($v);
          		$xml .= '</'.$k.'>';
@@ -100,8 +100,8 @@ class xmlClass {
         // 打开文件
         $file = APP_XML_ROOT.$name.'.php';
         $handle = @fopen($file, "w");  //打开或生成文件并取得文件头指针
-        $xml = simplexml_load_file($path);  
-        if(!$xml) error('xml文件载入错误！请重试。'); 
+        $xml = simplexml_load_file($path);
+        if(!$xml) error('xml文件载入错误！请重试。');
 
         //生成php数组
         $arr = $this->objectToArray($xml);
@@ -112,8 +112,8 @@ class xmlClass {
         $string_process = var_export($arr, TRUE);
         $string_end = "\n?>";
         $string = $string_start.$string_process.$string_end; //开始写入文件
-        $put = file_put_contents($file, $string);   
-        if(!$put) error('数据生成出错！请重试。'); 
+        $put = file_put_contents($file, $string);
+        if(!$put) error('数据生成出错！请重试。');
 
         // // NO.2
         // //数组序列化
@@ -140,8 +140,8 @@ class xmlClass {
      * @return arr    $array     返回XML文件路径
      */
     public function objectToArray($object) {
-        // 判断对象是否为空  
-        if( count($object)==0 ){  
+        // 判断对象是否为空
+        if( count($object)==0 ){
             return trim((string)$object);
         }
 
